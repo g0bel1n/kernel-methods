@@ -1,10 +1,10 @@
-from ._classifier_base import ClassifierBase 
-from kernels._kernel_base import KernelBase
+from ._classifier_base import ClassifierBase
+from kernels._base import KernelBase
 import numpy as np
 
-class KNNClassifier(ClassifierBase):
 
-    def __init__(self, k :int, kernel : KernelBase):
+class KNNClassifier(ClassifierBase):
+    def __init__(self, k: int, kernel: KernelBase):
         super().__init__()
         self.k = k
         self.kernel = kernel
@@ -17,9 +17,9 @@ class KNNClassifier(ClassifierBase):
 
     def predict(self, X):
         y = np.zeros(len(X))
-        idxs = np.argsort(self.dist_matrix, axis=1)[:self.k]
+        idxs = np.argsort(self.dist_matrix, axis=1)[: self.k]
         print(idxs.shape)
-        y = np.bincount(self.y[idxs], minlength=len(self.get_classes())) #type: ignore
+        y = np.bincount(self.y[idxs], minlength=len(self.get_classes()))  # type: ignore
         return y
 
     def __repr__(self):
@@ -33,6 +33,3 @@ class KNNClassifier(ClassifierBase):
 
     def __hash__(self):
         return hash((self.k, self.kernel))
-
-    
-
