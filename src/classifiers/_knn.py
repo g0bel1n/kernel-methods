@@ -14,13 +14,10 @@ class KNNClassifier(ClassifierBase):
         self.y = y
         self.set_classes(np.unique(y))
         self.dist_matrix = self.kernel.gram_matrix(X)
-
-    def predict(self, X):
-        y = np.zeros(len(X))
-        idxs = np.argsort(self.dist_matrix, axis=1)[: self.k]
-        print(idxs.shape)
-        y = np.bincount(self.y[idxs], minlength=len(self.get_classes()))  # type: ignore
-        return y
+    
+    def get_logits(self, X):
+        #not really logits, but bincounts
+        return self.predict(X)
 
     def __repr__(self):
         return f"KNNClassifier(k={self.k}, kernel={self.kernel})"

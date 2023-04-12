@@ -3,36 +3,17 @@ import numpy as np
 
 
 class ClassifierBase(ABC):
-
-    def __init__(self):
-        self._classes = None
+    
 
     @abstractmethod
     def fit(self, X, y):
-        pass
+        ...
 
-    @abstractmethod
     def predict(self, X):
-        pass
+        return self.get_logits(X).argmax(axis=1)
+        
 
     @abstractmethod
-    def __repr__(self):
-        pass
+    def get_logits(self, K) -> np.ndarray:
+        ...
 
-    @abstractmethod
-    def __str__(self):
-        pass
-
-    @abstractmethod
-    def __eq__(self, other):
-        pass
-
-
-    def score(self, X, y):
-        return np.mean(self.predict(X) == y)
-
-    def get_classes(self):
-        return self._classes
-
-    def set_classes(self, classes):
-        self._classes = classes
