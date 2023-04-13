@@ -1,3 +1,7 @@
-from ._knn import KNNClassifier
+import cvxopt
 
-__all__ = ["KNNClassifier"]
+from ._svm import SVM
+
+__all__ = ["SVM"]
+
+cvxopt.solvers.options["show_progress"] = False

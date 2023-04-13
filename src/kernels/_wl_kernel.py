@@ -3,7 +3,7 @@ import networkx as nx
 import numpy as np
 
 
-class WLKernel(GraphKernel):
+class WeisfeilerLehmanKernel(GraphKernel):
     def __init__(self, num_iterations: int = 5, kernel_degree: int = 3):
         self.num_iterations = num_iterations
         self.kernel_degree = kernel_degree
