@@ -1,0 +1,6 @@
+data/training_labels.pkl filter=lfs diff=lfs merge=lfs -text
+data/training_data.pkl filter=lfs diff=lfs merge=lfs -text
+data/test_data.pkl filter=lfs diff=lfs merge=lfs -text
+data/WL_train.npy filter=lfs diff=lfs merge=lfs -text
+data/WL_test_train.npy filter=lfs diff=lfs merge=lfs -text
+data/K_train_test_vertex.npy filter=lfs diff=lfs merge=lfs -text
